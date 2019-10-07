@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.Sunflower.myapplication">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".Util.LiveDB"
         android:allowBackup="true"
@@ -11,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.MovieDetail"></activity>
+        <activity android:name=".Activity.MovieDetailFavorit"></activity>
+        <activity android:name=".Activity.MovieDetail" />
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +23,5 @@
             </intent-filter>
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

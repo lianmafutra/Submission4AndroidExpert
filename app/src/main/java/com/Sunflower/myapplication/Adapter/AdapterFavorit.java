@@ -3,6 +3,7 @@ package com.Sunflower.myapplication.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.Sunflower.myapplication.Activity.MovieDetail;
+import com.Sunflower.myapplication.Activity.MovieDetailFavorit;
 import com.Sunflower.myapplication.DB.AppDatabase;
 import com.Sunflower.myapplication.DB.MovieRoom;
 import com.Sunflower.myapplication.Model.MovieResults;
@@ -99,7 +101,10 @@ public class AdapterFavorit extends RecyclerView.Adapter<AdapterFavorit.MovieVie
         public void onClick(View v) {
             int position = getAdapterPosition();
             MovieRoom movie = mData.get(position);
-            Toast.makeText(context, ""+movie.getIdmovie()+movie.release_date, Toast.LENGTH_SHORT).show();
+            Intent moveWithObjectIntent = new Intent(itemView.getContext(), MovieDetailFavorit.class);
+            moveWithObjectIntent.putExtra(MovieDetailFavorit.EXTRA_MOVIE, (Parcelable) movie);
+            moveWithObjectIntent.putExtra(MovieDetailFavorit.EXTRA_TYPE, "movie");
+            itemView.getContext().startActivity(moveWithObjectIntent);
         }
     }
 
