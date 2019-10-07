@@ -2,8 +2,7 @@ package com.Sunflower.myapplication.Activity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,9 +31,7 @@ public class MovieDetail extends AppCompatActivity {
     public static final String EXTRA_TYPE = "extra_type";
 
     @BindView(R.id.btn_fav)
-    Button btn_fav;
-    @BindView(R.id.icon_favorite_clicked)
-    Button btn_fav_clik;
+    ImageButton btn_fav;
     @BindView(R.id.tv_title)
     TextView title;
     @BindView(R.id.tv_date)
@@ -89,7 +86,7 @@ public class MovieDetail extends AppCompatActivity {
 
     @OnClick(R.id.btn_fav)
     void klik_fav() {
-        favoritetrue();
+
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "moviedb").build();
 
@@ -114,16 +111,6 @@ public class MovieDetail extends AppCompatActivity {
 
     }
 
-    void favoritetrue() {
-        btn_fav.setVisibility(View.INVISIBLE);
-        btn_fav_clik.setVisibility(View.VISIBLE);
-    }
-
-    @OnClick(R.id.icon_favorite_clicked)
-    void klik() {
-        Toast.makeText(this, "Movie already favorite list", Toast.LENGTH_SHORT).show();
-    }
-
     private void insertData(final MovieRoom movie) {
 
         new AsyncTask<Void, Void, Long>() {
@@ -135,7 +122,7 @@ public class MovieDetail extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(Long status) {
-                Toast.makeText(MovieDetail.this, "status row " + status, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MovieDetail.this, "Succes add to favorit list", Toast.LENGTH_SHORT).show();
             }
         }.execute();
     }

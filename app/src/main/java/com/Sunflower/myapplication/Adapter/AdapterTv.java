@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.Sunflower.myapplication.Activity.MovieDetail;
 import com.Sunflower.myapplication.Model.TvResults;
 import com.Sunflower.myapplication.R;
@@ -23,6 +22,7 @@ import java.util.ArrayList;
 public class AdapterTv extends RecyclerView.Adapter<AdapterTv.MovieViewHolder> {
 
     private ArrayList<TvResults> mData = new ArrayList<>();
+
     public void setData(ArrayList<TvResults> items) {
         mData.clear();
         mData.addAll(items);
@@ -46,9 +46,9 @@ public class AdapterTv extends RecyclerView.Adapter<AdapterTv.MovieViewHolder> {
         return mData.size();
     }
 
-    class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imgPhoto;
-        TextView title,date,desc;
+        TextView title, date, desc;
         public Button btn_fav;
 
         MovieViewHolder(@NonNull View itemView) {
@@ -63,6 +63,7 @@ public class AdapterTv extends RecyclerView.Adapter<AdapterTv.MovieViewHolder> {
 
             itemView.setOnClickListener(this);
         }
+
         void bind(TvResults movies) {
             String img_path = "https://image.tmdb.org/t/p/w185" + movies.getPoster_path();
 

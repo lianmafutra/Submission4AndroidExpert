@@ -2,7 +2,6 @@ package com.Sunflower.myapplication.Adapter;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import com.Sunflower.myapplication.Activity.MovieDetail;
 import com.Sunflower.myapplication.DB.AppDatabase;
 import com.Sunflower.myapplication.DB.MovieRoom;
 import com.Sunflower.myapplication.R;

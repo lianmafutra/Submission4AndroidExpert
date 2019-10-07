@@ -1,17 +1,14 @@
 package com.Sunflower.myapplication.Adapter;
 
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,22 +21,25 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 
-
-public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MovieViewHolder>{
+public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MovieViewHolder> {
     private Context context;
 
     public AdapterMovie(Context context) {
         this.context = context;
     }
+
     private OnItemClickCallback onItemClickCallback;
+
     public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback;
     }
+
     public interface OnItemClickCallback {
         void onItemClicked(MovieResults data);
     }
 
     private ArrayList<MovieResults> mData = new ArrayList<>();
+
     public void setData(ArrayList<MovieResults> items) {
         mData.clear();
         mData.addAll(items);
@@ -65,11 +65,10 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MovieViewHol
     }
 
 
-
-    class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imgPhoto;
-        TextView title,date,desc;
-        public  Button btn_fav;
+        TextView title, date, desc;
+        public Button btn_fav;
 
         MovieViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +82,7 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MovieViewHol
 
 
         }
+
         void bind(MovieResults movies) {
             String img_path = "https://image.tmdb.org/t/p/w185" + movies.getPhoto();
 
@@ -107,8 +107,6 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MovieViewHol
             itemView.getContext().startActivity(moveWithObjectIntent);
         }
     }
-
-
 
 
 }
