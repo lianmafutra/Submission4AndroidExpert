@@ -1,5 +1,6 @@
 package com.Sunflower.myapplication.DB;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -8,13 +9,6 @@ import java.io.Serializable;
 
 @Entity(tableName = "tbmovie")
 public class MovieRoom implements Serializable {
-    public int getIdmovie() {
-        return idmovie;
-    }
-
-    public void setIdmovie(int idmovie) {
-        this.idmovie = idmovie;
-    }
 
     public String getTitle() {
         return title;
@@ -48,8 +42,18 @@ public class MovieRoom implements Serializable {
         this.photo = photo;
     }
 
-    @PrimaryKey(autoGenerate = true)
-    public int idmovie;
+    @NonNull
+    public String getIdmovie() {
+        return idmovie;
+    }
+
+    public void setIdmovie(@NonNull String idmovie) {
+        this.idmovie = idmovie;
+    }
+
+    @PrimaryKey()
+    @NonNull
+    private String idmovie;
 
     @ColumnInfo(name = "title")
     public String title;

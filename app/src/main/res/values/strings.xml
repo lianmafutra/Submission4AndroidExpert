@@ -6,6 +6,8 @@
     <string name="title_tv">TV Shows</string>
     <string name="title_movie">Movies</string>
     <string name="lang">Change language</string>
-    <string name="Description" translatable="false">Description</string>
-    <string name="title_favorit" translatable="false">Favorit</string>
+    <string name="Description">Description</string>
+    <string name="title_favorit">Favorite</string>
+    <string name="tv_favorite">Tv Favorite</string>
+    <string name="movie_favorite">Movie Favorite</string>
 </resources>

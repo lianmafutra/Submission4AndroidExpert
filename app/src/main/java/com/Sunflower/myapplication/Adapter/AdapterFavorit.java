@@ -2,6 +2,7 @@ package com.Sunflower.myapplication.Adapter;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import com.Sunflower.myapplication.Activity.MovieDetail;
 import com.Sunflower.myapplication.DB.AppDatabase;
 import com.Sunflower.myapplication.DB.MovieRoom;
+import com.Sunflower.myapplication.Model.MovieResults;
 import com.Sunflower.myapplication.R;
 import com.bumptech.glide.Glide;
 
@@ -70,6 +73,7 @@ public class AdapterFavorit extends RecyclerView.Adapter<AdapterFavorit.MovieVie
 
         MovieViewHolder(@NonNull View itemView) {
             super(itemView);
+
             title = itemView.findViewById(R.id.txt_title_movie);
             date = itemView.findViewById(R.id.txt_release_date);
             desc = itemView.findViewById(R.id.txt_desc_movie);
@@ -93,6 +97,9 @@ public class AdapterFavorit extends RecyclerView.Adapter<AdapterFavorit.MovieVie
 
         @Override
         public void onClick(View v) {
+            int position = getAdapterPosition();
+            MovieRoom movie = mData.get(position);
+            Toast.makeText(context, ""+movie.getIdmovie()+movie.release_date, Toast.LENGTH_SHORT).show();
         }
     }
 

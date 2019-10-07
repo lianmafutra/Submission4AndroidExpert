@@ -6,4 +6,8 @@
     <string name="title_tv">Acara Tv</string>
     <string name="title_movie">Film</string>
     <string name="lang">Ganti Bahasa</string>
+    <string name="Description">Deskripsi</string>
+    <string name="title_favorit">Favorit</string>
+    <string name="tv_favorite">Tv favorit</string>
+    <string name="movie_favorite">Film favorit</string>
 </resources>

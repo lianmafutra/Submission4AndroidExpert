@@ -22,13 +22,13 @@
             android:id="@+id/tab_kontak"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Movie Favorite" />
+            android:text="@string/movie_favorite" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_pesan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Tv Favorite" />
+            android:text="@string/tv_favorite" />
 
     </com.google.android.material.tabs.TabLayout>
 

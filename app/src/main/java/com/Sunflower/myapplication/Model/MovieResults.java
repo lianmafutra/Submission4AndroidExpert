@@ -16,6 +16,20 @@ public class MovieResults implements Parcelable {
     private String banner;
     private String vote_count;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public static Creator<MovieResults> getCREATOR() {
+        return CREATOR;
+    }
+
+    private String id;
+
 
     public String getBanner() {
         return banner;
@@ -92,6 +106,7 @@ public class MovieResults implements Parcelable {
     public MovieResults(JSONObject object) {
         try {
             String vote_count = object.getString("vote_count");
+            String id = object.getString("id");
             Double vote_average = object.getDouble("vote_average");
             String title = object.getString("title");
             Double popularity = object.getDouble("popularity");
@@ -102,6 +117,7 @@ public class MovieResults implements Parcelable {
             String backdrop_path = object.getString("backdrop_path");
 
             this.vote_count = vote_count;
+            this.id = id;
             this.vote_average = vote_average;
             this.title = title;
             this.popularity = popularity;
@@ -123,7 +139,6 @@ public class MovieResults implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.vote_count);
         dest.writeValue(this.vote_average);
         dest.writeString(this.title);
         dest.writeValue(this.popularity);
@@ -132,10 +147,11 @@ public class MovieResults implements Parcelable {
         dest.writeString(this.release_date);
         dest.writeString(this.photo);
         dest.writeString(this.banner);
+        dest.writeString(this.vote_count);
+        dest.writeString(this.id);
     }
 
     protected MovieResults(Parcel in) {
-        this.vote_count = in.readString();
         this.vote_average = (Double) in.readValue(Double.class.getClassLoader());
         this.title = in.readString();
         this.popularity = (Double) in.readValue(Double.class.getClassLoader());
@@ -144,6 +160,8 @@ public class MovieResults implements Parcelable {
         this.release_date = in.readString();
         this.photo = in.readString();
         this.banner = in.readString();
+        this.vote_count = in.readString();
+        this.id = in.readString();
     }
 
     public static final Creator<MovieResults> CREATOR = new Creator<MovieResults>() {

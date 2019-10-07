@@ -45,8 +45,10 @@ public class MovieDetail extends AppCompatActivity {
 
     private AppDatabase db;
     MovieResults movie;
+
     TvResults tv;
     String type;
+    String id_movie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,10 @@ public class MovieDetail extends AppCompatActivity {
         movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
         tv = getIntent().getParcelableExtra(EXTRA_TV);
         type = getIntent().getStringExtra(EXTRA_TYPE);
+
+
         if (type.equals("movie")) {
+            id_movie= movie.getId();
             title.setText(movie.getTitle());
             date.setText(movie.getRelease_date());
             getSupportActionBar().setTitle("Movie Detail");
@@ -65,6 +70,7 @@ public class MovieDetail extends AppCompatActivity {
 
         }
         if (type.equals("tv")) {
+            id_movie= tv.getId();
             title.setText(tv.getName());
             date.setText(tv.getFirst_air_date());
             getSupportActionBar().setTitle("Tv Show Detail");
@@ -92,6 +98,7 @@ public class MovieDetail extends AppCompatActivity {
 
         if (type.equals("movie")) {
             MovieRoom m = new MovieRoom();
+            m.setIdmovie(id_movie);
             m.setTitle(movie.getTitle());
             m.setRelease_date(movie.getRelease_date());
             m.setOverview(movie.getOverview());
@@ -101,6 +108,7 @@ public class MovieDetail extends AppCompatActivity {
         }
         if (type.equals("tv")) {
             MovieRoom m = new MovieRoom();
+            m.setIdmovie(id_movie);
             m.setTitle(tv.getName());
             m.setRelease_date(tv.getFirst_air_date());
             m.setOverview(tv.getOverview());

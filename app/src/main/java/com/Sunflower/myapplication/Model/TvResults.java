@@ -15,6 +15,16 @@ public class TvResults implements Parcelable {
     private String overview;
     private String poster_path;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
+
 
     public String getName() {
         return name;
@@ -80,25 +90,9 @@ public class TvResults implements Parcelable {
         this.poster_path = poster_path;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.name);
-        dest.writeValue(this.popularity);
-        dest.writeString(this.vote_count);
-        dest.writeString(this.first_air_date);
-        dest.writeString(this.original_language);
-        dest.writeValue(this.vote_average);
-        dest.writeString(this.overview);
-        dest.writeString(this.poster_path);
-    }
-
     public TvResults(JSONObject object) {
         try{
+            String id = object.getString("id");
             String name = object.getString("name");
             String vote_count = object.getString("vote_count");
             String first_air_date = object.getString("first_air_date");
@@ -108,6 +102,7 @@ public class TvResults implements Parcelable {
             Double popularity = object.getDouble("popularity");
             Double vote_average = object.getDouble("vote_average");
 
+            this.id = id;
             this.name = name;
             this.vote_count = vote_count;
             this.first_air_date = first_air_date;
@@ -123,6 +118,24 @@ public class TvResults implements Parcelable {
         }
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.name);
+        dest.writeValue(this.popularity);
+        dest.writeString(this.vote_count);
+        dest.writeString(this.first_air_date);
+        dest.writeString(this.original_language);
+        dest.writeValue(this.vote_average);
+        dest.writeString(this.overview);
+        dest.writeString(this.poster_path);
+        dest.writeString(this.id);
+    }
+
     protected TvResults(Parcel in) {
         this.name = in.readString();
         this.popularity = (Double) in.readValue(Double.class.getClassLoader());
@@ -132,9 +145,10 @@ public class TvResults implements Parcelable {
         this.vote_average = (Double) in.readValue(Double.class.getClassLoader());
         this.overview = in.readString();
         this.poster_path = in.readString();
+        this.id = in.readString();
     }
 
-    public static final Parcelable.Creator<TvResults> CREATOR = new Parcelable.Creator<TvResults>() {
+    public static final Creator<TvResults> CREATOR = new Creator<TvResults>() {
         @Override
         public TvResults createFromParcel(Parcel source) {
             return new TvResults(source);
